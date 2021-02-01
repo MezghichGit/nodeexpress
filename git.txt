@@ -1,0 +1,13 @@
+1- git init : initialiser le git local sur le projet
+
+2- git status : afficher les modifs sur le projet
+
+3- git add --all : sauvergarder les mise à jour
+
+4- git commit -m "tp1 node express"
+
+5- git push
+
+
+--
+6- git pull
