@@ -64,3 +64,6 @@ app.delete('/equipes/:id',(req,res)=>{
 });
 
 
+//Exercice 1:
+
+
