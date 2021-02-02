@@ -84,6 +84,7 @@ app.get('/joueurs/equipe/:idE',(req,res)=>{
 
 
 app.get('/joueurs/:idE/:num',(req,res)=>{
+    console.log("87");
     
     const ide = parseInt(req.params.idE) // on récupère l'id de l'équipe
 
@@ -96,6 +97,22 @@ app.get('/joueurs/:idE/:num',(req,res)=>{
 });
 
 //Fin partie 2
+
+
+// Partie 3
+
+app.get('/joueur/:idj/equipe',(req,res)=>{
+    //console.log("105");
+    const idj = parseInt(req.params.idj) // on récupère le id des paramètres de la requette
+
+    const player = joueurs.find(element => {return element.id === idj}); 
+
+    const equipe = equipes.find(team => {return team.id === player.idEquipe}); 
+    res.status(200).json(equipe);
+
+});
+
+//Fin partie 3
 
 app.get('/equipes',(req,res)=>{
     
