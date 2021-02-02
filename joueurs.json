@@ -16,8 +16,17 @@
 {
 "id": 2,
 "idEquipe":3,
-"nom": "CR",
+"nom": "Ronaldo",
 "numero" :10,
+"poste": "Attaquant"
+}
+
+,
+{
+"id": 9,
+"idEquipe":2,
+"nom": "Ronaldo",
+"numero" :9,
 "poste": "Attaquant"
 }
 ]

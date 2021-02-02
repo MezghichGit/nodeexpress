@@ -114,6 +114,18 @@ app.get('/joueur/:idj/equipe',(req,res)=>{
 
 //Fin partie 3
 
+
+// Partie 4
+
+app.get('/joueurs_recherche/:name',(req,res)=>{
+    
+    const players = joueurs.filter(element => {return element.nom === req.params.name}); 
+    res.status(200).json(players);
+
+});
+
+//Fin partie 4
+
 app.get('/equipes',(req,res)=>{
     
     //res.send("Liste des équipes")
