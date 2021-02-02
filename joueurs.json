@@ -7,6 +7,13 @@
 "poste": "Attaquant"
 },
 {
+"id": 4,
+"idEquipe":2,
+"nom": "Xavi",
+"numero" :7,
+"poste": "Milieu terrain"
+},
+{
 "id": 2,
 "idEquipe":3,
 "nom": "CR",

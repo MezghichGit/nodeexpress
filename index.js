@@ -8,7 +8,94 @@ app.listen(
     ()=>{console.log("Serveur Express a l ecoute sur le port 85");}
 );
 
+
+// les sources de données.
 const equipes = require('./equipes.json');
+const joueurs = require('./joueurs.json');
+
+// Partie 1 : CRUD de l'entité Joueur
+app.get('/joueurs',(req,res)=>{
+    
+    //res.send("Liste des équipes")
+    res.status(200).json(joueurs);
+
+});
+
+
+app.get('/joueurs/:id',(req,res)=>{
+    
+    const num = parseInt(req.params.id) // on récupère le id des paramètres de la requette
+
+    const player = joueurs.find( element => {return element.id === num}); // on cherche l'équipe qui a le même id que num
+
+    res.status(200).json(player);
+
+});
+
+// code d'ajout d'une nouvelle équipe
+
+app.post('/joueurs',(req,res)=>{
+
+    joueurs.push(req.body);
+    res.status(200).json(joueurs);
+
+});
+
+
+app.put('/joueurs/:id',(req,res)=>{
+    
+    const num = parseInt(req.params.id) // on récupère le id des paramètres de la requette
+
+    const player = joueurs.find( element => {return element.id === num}); // on cherche l'équipe qui a le même id que num
+
+    player.idEquipe = req.body.idEquipe;
+    player.nom = req.body.nom;
+    player.numero = req.body.numero;
+    player.poste = req.body.poste;
+    res.status(200).json(player);
+
+});
+
+
+app.delete('/joueurs/:id',(req,res)=>{
+    
+    const num = parseInt(req.params.id) // on récupère le id des paramètres de la requette
+    const player = joueurs.find( element => {return element.id === num}); // on cherche l'équipe qui a le même id que num
+    joueurs.splice(joueurs.indexOf(player),1);
+    res.status(200).json(joueurs);
+
+});
+
+// Fin partie 1
+
+
+//Partie 2 
+app.get('/joueurs/equipe/:idE',(req,res)=>{
+    
+    const ide = parseInt(req.params.idE) // on récupère le id des paramètres de la requette
+
+    const players = joueurs.filter(element => {return element.idEquipe === ide}); // on cherche le joueur qui a le même ide que num
+
+    res.status(200).json(players);
+
+});
+
+// Question : Déterminer une requette permettant de retourner le joueur num x de l'équipe numéro y
+
+
+app.get('/joueurs/:idE/:idJ',(req,res)=>{
+    
+    const ide = parseInt(req.params.idE) // on récupère l'id de l'équipe
+
+    const idj = parseInt(req.params.idJ)  // on récupère l'id du joueur
+
+    const player = joueurs.find(element => {return element.idEquipe === ide && element.id === idj}); // on cherche le joueur qui a le même ide que num
+
+    res.status(200).json(player);
+
+});
+
+//Fin partie 2
 
 app.get('/equipes',(req,res)=>{
     
