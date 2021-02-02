@@ -83,13 +83,13 @@ app.get('/joueurs/equipe/:idE',(req,res)=>{
 // Question : Déterminer une requette permettant de retourner le joueur num x de l'équipe numéro y
 
 
-app.get('/joueurs/:idE/:idJ',(req,res)=>{
+app.get('/joueurs/:idE/:num',(req,res)=>{
     
     const ide = parseInt(req.params.idE) // on récupère l'id de l'équipe
 
-    const idj = parseInt(req.params.idJ)  // on récupère l'id du joueur
+    const numJ = parseInt(req.params.num)  // on récupère l'id du joueur
 
-    const player = joueurs.find(element => {return element.idEquipe === ide && element.id === idj}); // on cherche le joueur qui a le même ide que num
+    const player = joueurs.find(element => {return element.idEquipe === ide && element.numero === numJ}); // on cherche le joueur qui a le même ide que num
 
     res.status(200).json(player);
 
