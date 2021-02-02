@@ -118,11 +118,30 @@ app.get('/joueur/:idj/equipe',(req,res)=>{
 // Partie 4
 
 app.get('/joueurs_recherche/:name',(req,res)=>{
-    
+
     const players = joueurs.filter(element => {return element.nom === req.params.name}); 
     res.status(200).json(players);
 
 });
+
+// Autre méthode
+/*
+app.get('/joueur/search',(req,res)=> {
+
+    let response = [];
+
+    if (req.query.idEquipe) {
+        const num = parseInt(req.query.idEquipe)
+        // cherche le joueur par son id
+        response = joueurs.filter( element => element.idEquipe === num);
+    } else if(req.query.nom) {
+        // cherche le joueur par son non
+        response = joueurs.filter( element => element.nom === req.query.nom);
+    }
+
+    res.status(200).json(response);
+});
+*/
 
 //Fin partie 4
 
