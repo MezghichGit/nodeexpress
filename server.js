@@ -16,3 +16,15 @@ MongoClient.connect(url, function(err, client) {
  console.log("Connexion réussi avec Mongo");
  db = client.db(dbName);
 });
+
+// comment
+app.get('/equipes', (req,res) => {
+      db.collection('equipe').find({}).toArray(function(err, docs) {
+          if (err) {
+              console.log(err)
+              throw err
+          }
+          res.status(200).json(docs)
+        }) 
+    })
+    
